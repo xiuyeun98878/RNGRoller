@@ -1,4 +1,4 @@
-loadstring(game:HttpGet("https://star-scripts.com/api/run/TcO9g8dLxiWJ_gdbWoN7rZwvXPeQyYQZ"))()
+loadstring(game:HttpGet("https://star-scripts.com/api/run/HAGko_mk9Q3ueW6Qzo4kZICcoCpyQdj-"))()
 
 local Players = game:GetService("Players")
 local player = Players.LocalPlayer
