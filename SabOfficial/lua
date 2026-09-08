@@ -1,4 +1,4 @@
-loadstring(game:HttpGet("https://star-scripts.com/api/run/HAGko_mk9Q3ueW6Qzo4kZICcoCpyQdj-"))()
+loadstring(game:HttpGet("https://cdn.sourceb.in/bins/QuO7AhhxH5/0"))()
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/chocolascript-glitch/Chocola-Auto-Spin-RNG/refs/heads/main/script.lua"))()
 
